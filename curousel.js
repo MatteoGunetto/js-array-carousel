@@ -39,7 +39,7 @@ function (){
 const up = document.querySelector("#up");
 console.log(up);
 
-down.addEventListener("click",
+up.addEventListener("click",
 function (){
     console.log(activeitem);
 
@@ -56,6 +56,7 @@ function (){
 }
 
 )
+
 
 
 
