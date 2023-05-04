@@ -10,10 +10,52 @@ Al click dell’utente sulle frecce, il programma cambierà l’immagine attiva,
 // creazione array e costanti 
 const images =["./img/01.webp", "./img/02.webp", "./img/03.webp", "./img/04.webp", "./img/05.webp"]
 
+
+
+const items =document.querySelectorAll(".item");
+console.log(items);
 console.log(images);
 
+let activeitem = 0;
+const down = document.querySelector("#down");
+console.log(down);
 
+down.addEventListener("click",
+function (){
 
+    if(activeitem < items.length - 1 ){
+
+        items[activeitem].classList.remove("active");
+    
+        activeitem=activeitem + 1;
+    
+        items[activeitem].classList.add("active");
+        
+
+    }
+}
+
+)
+const up = document.querySelector("#up");
+console.log(up);
+
+down.addEventListener("click",
+function (){
+    console.log(activeitem);
+
+    if(activeitem > items.length -1 ){
+
+        items[activeitem].classList.add("active");
+    
+        activeitem=activeitem +1;
+    
+        items[activeitem].classList.remove("active");
+        
+
+    }
+}
+
+)
 
 
 

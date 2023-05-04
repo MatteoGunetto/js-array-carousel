@@ -49,6 +49,6 @@ img {
 .item{
     display: none;
 }
-.item-active{
+.active{
     display: block;
 }
