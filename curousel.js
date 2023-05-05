@@ -37,37 +37,40 @@ for(let i = 0; i < 5; i++){
     }
 }
 
-const ListDiv = document.getElementsByClassName("item");
+// const ListDiv = document.getElementsByClassName("item");
 
 
 const down = document.getElementById("down");
 
 // Creo funzione per far scorrere immagini
+
+
 down.addEventListener("click",
     function(){
         
         if(posizioneImgesList < imageslist.length){
-
+            
             
             ListDiv[posizioneImgesList].classList.remove("active");
-
-           
+            
+            
             posizioneImgesList = posizioneImgesList +1;
-
+            
             
             ListDiv[posizioneImgesList].classList.add("active");
-
-           
+            
+            
             if(posizioneImgesList === (imageslist.length -1)){
-
+                
                 down.classList.add("hidden");
             }
-
-           
+            
+            
             if(posizioneImgesList === 1){
                 up.classList.remove("hidden");
             }
         }
+        console.log(down);
     }
 )
 
