@@ -8,54 +8,106 @@ MILESTONE 3
 Al click dell’utente sulle frecce, il programma cambierà l’immagine attiva, che quindi verrà visualizzata al posto della precedente. */
 
 // creazione array e costanti 
-const images =["./img/01.webp", "./img/02.webp", "./img/03.webp", "./img/04.webp", "./img/05.webp"]
+let imageslist =["./img/01.webp", "./img/02.webp", "./img/03.webp", "./img/04.webp", "./img/05.webp"]
+let posizioneImgesList = 0;
+let newDivImages;
+const container = document.getElementById("itemcontainer");
 
 
+for(let i = 0; i < 5; i++){
 
-const items =document.querySelectorAll(".item");
-console.log(items);
-console.log(images);
+    
+    newDivImages = document.createElement("div");
+    newDivImages.classList.add("item");
 
-let activeitem = 0;
-const down = document.querySelector("#down");
-console.log(down);
+    
+    if(posizioneImgesList === 0){
+        newDivImages.classList.add("active");
+    }
 
+    
+    container.append(newDivImages);
+    newDivImages.innerHTML = `<img src="${imageslist[posizioneImgesList]}">`;
+
+    
+    posizioneImgesList = posizioneImgesList + 1;
+
+    if(posizioneImgesList === 5){
+        imageslist = 0;
+    }
+}
+
+const ListDiv = document.getElementsByClassName("item");
+
+
+const down = document.getElementById("down");
+
+// Creo funzione per far scorrere immagini
 down.addEventListener("click",
-function (){
-
-    if(activeitem < items.length - 1 ){
-
-        items[activeitem].classList.remove("active");
-    
-        activeitem=activeitem + 1;
-    
-        items[activeitem].classList.add("active");
+    function(){
         
+        if(posizioneImgesList < imageslist.length){
 
+            
+            ListDiv[posizioneImgesList].classList.remove("active");
+
+           
+            posizioneImgesList = posizioneImgesList +1;
+
+            
+            ListDiv[posizioneImgesList].classList.add("active");
+
+           
+            if(posizioneImgesList === (imageslist.length -1)){
+
+                down.classList.add("hidden");
+            }
+
+           
+            if(posizioneImgesList === 1){
+                up.classList.remove("hidden");
+            }
+        }
     }
-}
-
 )
-const up = document.querySelector("#up");
-console.log(up);
 
+
+
+
+const up = document.getElementById("up");
+
+
+up.classList.add("hidden");
+
+// Creo funzione per far scorrere immagini
 up.addEventListener("click",
-function (){
-    console.log(activeitem);
-
-    if(activeitem > items.length -1 ){
-
-        items[activeitem].classList.add("active");
-    
-        activeitem=activeitem +1;
-    
-        items[activeitem].classList.remove("active");
+    function(){
         
+        if(posizioneImgesList < imageslist.length){
 
+           
+           ListDiv[posizioneImgesList].classList.remove("active");
+
+         
+            posizioneImgesList = posizioneImgesList -1;
+
+           
+           ListDiv[posizioneImgesList].classList.add("active");
+
+            
+            if(posizioneImgesList === 0){
+
+                up.classList.add("hidden");
+            }
+            
+            if(posizioneImgesList === (imageslist.length - 2)){
+                down.classList.remove("hidden");
+            }
+            
+        }
     }
-}
-
 )
+
 
 
 
